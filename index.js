@@ -12,4 +12,4 @@
 //const PI = require('./coba');
 const coba = require('./coba');
 
-console.log(coba.PI, coba.mahasiswa.cetakMhs(), new coba.Orang());
+console.log(coba.cetakNama('chaerul'), coba.PI, coba.mahasiswa.cetakMhs(), new coba.Orang());
