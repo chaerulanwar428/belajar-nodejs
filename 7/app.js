@@ -4,4 +4,8 @@
 
 const fs = require('fs');
 
-fs.writeFileSync('test.txt', 'Hello world secara syncronus');
+try {
+  fs.writeFileSync('data/test.txt', 'Hello world secara syncronus');
+} catch (e) {
+  console.log(e);
+}
