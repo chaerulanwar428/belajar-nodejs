@@ -19,5 +19,11 @@ const fs = require('fs');
 // });
 
 //membaca isi file (syncronus)
-const data = fs.readFileSync('data/test.txt', 'utf-8');
-console.log(data);
+// const data = fs.readFileSync('data/test.txt', 'utf-8');
+// console.log(data);
+
+//membaca file secara asyncronus
+fs.readFile('data/test.txt', 'utf-8', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
