@@ -2,7 +2,7 @@
 
 //file system
 
-const fs = require('fs');
+// const fs = require('fs');
 
 //menuliskan string ke file (synchonus)
 
@@ -23,7 +23,19 @@ const fs = require('fs');
 // console.log(data);
 
 //membaca file secara asyncronus
-fs.readFile('data/test.txt', 'utf-8', (err, data) => {
-  if (err) throw err;
-  console.log(data);
+// fs.readFile('data/test.txt', 'utf-8', (err, data) => {
+//   if (err) throw err;
+//   console.log(data);
+// });
+
+//core module readline
+
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+rl.question('masukan nama anda:', (nama) => {
+  console.log(`Terimakasih ${nama}`);
+  rl.close();
 });
