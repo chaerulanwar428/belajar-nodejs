@@ -2,7 +2,9 @@
 
 //file system
 
+const { rejects } = require('assert');
 const fs = require('fs');
+const { resolve } = require('path');
 
 //menuliskan string ke file (synchonus)
 
@@ -48,16 +50,49 @@ if (!fs.existsSync(dataPath)) {
   fs.writeFileSync(dataPath, '[]', 'utf-8');
 }
 
-rl.question('masukan nama anda:', (nama) => {
-  rl.question('Masukan no HP anda : ', (noHP) => {
-    const contact = { nama, noHP };
-    const file = fs.readFileSync('data/contacts.json', 'utf-8');
-    const contacts = JSON.parse(file);
-
-    contacts.push(contact);
-
-    fs.writeFileSync('data/contacts.json', JSON.stringify(contacts));
-    console.log('Terimakasih sudah memasukan data.');
-    rl.close();
+const pertanyaan1 = () => {
+  return new Promise((resolve, reject) => {
+    rl.question('Masukan Nama anda: ', (nama) => {
+      resolve(nama);
+    });
   });
-});
+};
+
+const pertanyaan2 = () => {
+  return new Promise((resolve, reject) => {
+    rl.question('Masukan email anda: ', (email) => {
+      resolve(email);
+    });
+  });
+};
+
+const main = async () => {
+  const nama = await pertanyaan1();
+  const email = await pertanyaan2();
+
+  const contact = { nama, email };
+  const file = fs.readFileSync('data/contacts.json', 'utf-8');
+  const contacts = JSON.parse(file);
+
+  contacts.push(contact);
+
+  fs.writeFileSync('data/contacts.json', JSON.stringify(contacts));
+  console.log('Terimakasih sudah memasukan data.');
+  rl.close();
+};
+
+main();
+
+// rl.question('masukan nama anda:', (nama) => {
+//   rl.question('Masukan no HP anda : ', (noHP) => {
+//     const contact = { nama, noHP };
+//     const file = fs.readFileSync('data/contacts.json', 'utf-8');
+//     const contacts = JSON.parse(file);
+
+//     contacts.push(contact);
+
+//     fs.writeFileSync('data/contacts.json', JSON.stringify(contacts));
+//     console.log('Terimakasih sudah memasukan data.');
+//     rl.close();
+//   });
+// });
