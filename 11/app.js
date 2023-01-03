@@ -1,3 +1,36 @@
+const yargs = require('yargs');
+
+yargs.command({
+  command: 'add',
+  describe: 'menambahkan contact baru',
+  builder: {
+    nama: {
+      describe: 'Nama Lengkap',
+      demandOption: 'true',
+      type: 'string',
+    },
+    email: {
+      describe: 'Email',
+      demandOption: false,
+      type: 'string',
+    },
+    noHP: {
+      describe: 'Nomor Handphone',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler(argv) {
+    const contact = {
+      nama: argv.nama,
+      email: argv.email,
+      noHP: argv.noHP,
+    };
+    console.log(contact);
+  },
+});
+
+yargs.parse();
 //core module
 
 //file system
@@ -28,17 +61,17 @@
 
 //core module readline
 
-const { tulisPertanyaan, simpanContact } = require('./contacts');
+// const { tulisPertanyaan, simpanContact } = require('./contacts');
 
-const main = async () => {
-  const nama = await tulisPertanyaan('Masukan nama anda : ');
-  const email = await tulisPertanyaan('Masukan email anda: ');
-  const noHP = await tulisPertanyaan('Masukan no HP anda: ');
+// const main = async () => {
+//   const nama = await tulisPertanyaan('Masukan nama anda : ');
+//   const email = await tulisPertanyaan('Masukan email anda: ');
+//   const noHP = await tulisPertanyaan('Masukan no HP anda: ');
 
-  simpanContact(nama, email, noHP);
-};
+//   simpanContact(nama, email, noHP);
+// };
 
-main();
+// main();
 
 // rl.question('masukan nama anda:', (nama) => {
 //   rl.question('Masukan no HP anda : ', (noHP) => {
