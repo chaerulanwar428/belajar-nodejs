@@ -35,6 +35,19 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
+
+//membuat folder data jika belum ada
+const dirPath = './data';
+if (!fs.existsSync(dirPath)) {
+  fs.mkdirSync(dirPath);
+}
+
+//membuat file contact.json jika belum ada
+const dataPath = './data/contacts.json';
+if (!fs.existsSync(dataPath)) {
+  fs.writeFileSync(dataPath, '[]', 'utf-8');
+}
+
 rl.question('masukan nama anda:', (nama) => {
   rl.question('Masukan no HP anda : ', (noHP) => {
     const contact = { nama, noHP };
