@@ -2,7 +2,7 @@
 
 //file system
 
-// const fs = require('fs');
+const fs = require('fs');
 
 //menuliskan string ke file (synchonus)
 
@@ -37,7 +37,14 @@ const rl = readline.createInterface({
 });
 rl.question('masukan nama anda:', (nama) => {
   rl.question('Masukan no HP anda : ', (noHP) => {
-    console.log(`Terimakasih ${nama}, sudah menginputkan ${noHP}`);
+    const contact = { nama, noHP };
+    const file = fs.readFileSync('data/contacts.json', 'utf-8');
+    const contacts = JSON.parse(file);
+
+    contacts.push(contact);
+
+    fs.writeFileSync('data/contact.json', JSON.stringify(contacts));
+    console.log('Terimakasih sudah memasukan data.');
     rl.close();
   });
 });
