@@ -36,6 +36,8 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 rl.question('masukan nama anda:', (nama) => {
-  console.log(`Terimakasih ${nama}`);
-  rl.close();
+  rl.question('Masukan no HP anda : ', (noHP) => {
+    console.log(`Terimakasih ${nama}, sudah menginputkan ${noHP}`);
+    rl.close();
+  });
 });
