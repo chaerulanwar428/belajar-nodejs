@@ -1,0 +1,34 @@
+REPL
+Read - Eval - Print - Loop
+
+tujuan
+- debug script
+- eksekusi code lwt terminal
+
+- perintah unix
+pwd - lg ada dimana
+ls - list file
+ll - list file lebih detail
+node - masuk cmd punyanya REPL(ini yg disebut repl)
+membaca - mengevaluasi - mencetak - mengulang kembali
+clear - riset
+touch coba.js - membuat file
+vi coba.js - menulis script javascript
+cat coba.js - melihat isi file
+rm coba.js - menghapys isi file
+
+keyword vi
+i - insert manipulasi
+esc + :wq - exit
+
+- perintah unix
+- punya akses ke variabel global
+global - varivale global
+global. + tabtab - semua variable global
+.help - special keyword
+.break / .clear - kemberhentikan fungsi error
+.exit - keluar
+.load coba.js - mengambil isi file javascript
+.save coba.js - menyimpan  file javascript
+.editor - seperti vi
+

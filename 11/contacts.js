@@ -1,6 +1,7 @@
 const { rejects } = require('assert');
 const fs = require('fs');
 const { resolve } = require('path');
+const validator = require('validator');
 
 const readline = require('readline');
 const rl = readline.createInterface({
@@ -35,6 +36,13 @@ const tulisPertanyaan = (pertanyaan) => {
 //     });
 //   });
 // };
+
+if (email) {
+  if (!validator.isEmail(email)) {
+    console.log('email tidak valid');
+    return false;
+  }
+}
 
 const simpanContact = (nama, email, noHP) => {
   const contact = { nama, email, noHP };
